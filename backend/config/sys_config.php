@@ -1,11 +1,11 @@
 <?php
 $config =  [
   'database' => [
-    'host' => 'sql101.infinityfree.com',
-    'user' => 'if0_39147920',
-    'password' => 'FqA8mqwB58u4',
-    'port' => 3306,
-    'dbname' => 'if0_39147920_c2c',
+    'host' => 'mysql-1b7f1ee8-grantoranduprez-de06.i.aivencloud.com',
+    'user' => 'avnadmin',
+    'password' => 'AVNS_pww21FkaqpGQcgixFkB',
+    'port' => 15890,
+    'dbname' => 'c2c',
   ],
   'llm' =>
   [
