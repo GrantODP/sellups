@@ -5,9 +5,8 @@ document.addEventListener("DOMContentLoaded", async function () {
   const profile_pic = is_dark ? "profile_light.png" : "profile_dark.png";
   const userLink = document.getElementById('user-link');
   const user = JSON.parse(localStorage.getItem('user'));
-  console.log(profile_pic);
   if (user) {
-    const img = user.profile_pic || `media/${profile_pic}`
+    const img = user.profile_pic || `${profile_pic}`
     const html = `<img src= "/media/${img}" alt = "Profile Picture"
     class=""rounded - circle me - 3" width="32" height="32">
       <span id = "user-link-name" class="align-middle" > ${user.name ?? "User"}</span >`
