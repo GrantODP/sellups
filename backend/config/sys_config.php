@@ -1,11 +1,11 @@
 <?php
 $config =  [
   'database' => [
-    'host' => 'localhost',
-    'user' => 'root',
-    'password' => 'grant030798',
+    'host' => 'sql101.infinityfree.com',
+    'user' => 'if0_39147920',
+    'password' => 'FqA8mqwB58u4',
     'port' => 3306,
-    'dbname' => 'c2c',
+    'dbname' => 'if0_39147920_c2c',
   ],
   'llm' =>
   [
