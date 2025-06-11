@@ -1,0 +1,123 @@
+<div class="container my-4" id="product-data">
+  <h2 id="ptitle" class="mb-4">Product Title</h2>
+  <h3 id="date-post" class="mb-4">Product date</h2>
+  <div class="row">
+    <!-- Product Left Section -->
+    <div class="col-lg-8">
+      <!-- Product Images -->
+      <div class="card mb-4">
+        <div class="card-body">
+          <!-- Large main image container -->
+          <div id="product-image-container" class="mb-3 text-center">
+          </div>
+
+          <!-- Thumbnails row -->
+          <div id="product-image-thumbnails" class="d-flex gap-2 justify-content-center small">
+          </div>
+        </div>
+      </div>
+
+      <!-- Description -->
+      <div class="card mb-4" id="ad-descp">
+        <div class="card-header fw-bold">Description</div>
+        <div class="card-body" id="ad-descp-body"></div>
+      </div>
+
+      <!-- Evaluation -->
+      <div class="card mb-4" id="eval-text">
+        <div class="card-header d-flex justify-content-between align-items-center">
+          <span class="fw-bold">Evaluation</span>
+          <button id="eval_btn" class="btn btn-outline-secondary btn-sm">Evaluate</button>
+        </div>
+        <div class="card-body" id="eval-body"></div>
+      </div>
+    </div>
+
+    <!-- Seller Right Section -->
+    <div class="col-lg-4">
+
+      <!-- Ad Score -->
+      <div class="mb-3" id="ascore">
+        <span class="fw-bold">Ad Rating:</span>
+        <span id="ascore-body"></span>
+      </div>
+      <div class="card mb-4" id="seller-info">
+        <div class="card-body">
+          <h5 id="sel-name" class="card-title">Seller</h5>
+
+          <div class="mb-3" id="sel-rating">
+            <div class="fw-semibold">Seller Rating</div>
+            <div class="rate-score" id="rate-body"></div>
+            <small id="rate-count" class="text-muted"></small>
+          </div>
+
+          <div id="contact" class="mb-2">Contact</div>
+          <div id="verification" class="mb-2">Verification: unknown</div>
+          <div id="price" class="mb-3">Price</div>
+
+          <button class="btn btn-success w-100 mb-2" id="add-cart-btn">Add to Cart</button>
+          <button class="btn btn-outline-danger w-100" id="report-ad">Report Listing</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- User Review Section -->
+<div class="container my-4" id="user-review-container">
+  <!-- View Review -->
+  <div id="user-review" class="card d-none">
+    <div class="card-body">
+      <h4 class="card-title">Your Review</h4>
+
+      <div class="mb-2">
+        <strong>Rating:</strong>
+        <p id="review-rating" class="form-control-plaintext"></p>
+      </div>
+
+      <div class="mb-2">
+        <strong>Message:</strong>
+        <p id="review-message" class="form-control-plaintext"></p>
+      </div>
+
+      <div class="mb-3 text-muted">
+        <strong>Posted on:</strong>
+        <p id="review-date" class="form-control-plaintext"></p>
+      </div>
+
+      <button id="review-edit-btn" class="btn btn-primary">Edit Review</button>
+    </div>
+  </div>
+
+  <!-- Write Review Form -->
+  <form id="write-review" class="card d-none mt-4">
+    <div class="card-body">
+      <h4 class="card-title" id="review-write-h">Write a Review</h4>
+
+      <div class="mb-3">
+        <label for="rating" class="form-label">Score (1–5)</label>
+        <select class="form-select" id="rating">
+          <option selected disabled>Choose a score...</option>
+          <option value="1">1 - Poor</option>
+          <option value="2">2 - Fair</option>
+          <option value="3">3 - Good</option>
+          <option value="4">4 - Very Good</option>
+          <option value="5">5 - Excellent</option>
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label for="message" class="form-label">Your Review</label>
+        <textarea class="form-control" id="message" rows="3" placeholder="Enter your review here..."></textarea>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Submit Review</button>
+    </div>
+  </form>
+</div>
+
+<!-- Public Reviews -->
+<div class="container my-4" id="reviews-section">
+  <h3>Reviews</h3>
+  <div id="reviews-container" class="row g-3"></div>
+</div>

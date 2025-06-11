@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <base href="/public/">
+  <title>Admin Panel</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<style>
+  .side :hover {
+    background-color: grey;
+  }
+
+  .admin-section {
+    display: none;
+  }
+</style>
+
+<body>
+  <?php include('navbar.html'); ?>
+  <div class="container-fluid">
+    <div class="row flex-column flex-md-row min-vh-100">
+      <!-- Sidebar -->
+      <nav class="col-12 col-md-3 col-lg-2 bg-dark text-white p-3">
+        <h4 class="text-center mb-4">Admin Panel</h4>
+        <ul class="nav nav-pills flex-column side w-100">
+          <button type="button" class="nav-item btn btn-link nav-link text-white text-start p-2 mb-2 "
+            onclick="showSection('users')">Users</button>
+          <button type="button" class="nav-item btn btn-link nav-link text-white text-start p-2 mb-2"
+            onclick="showSection('sellers')">Sellers</button>
+          <button type="button" class="nav-item btn btn-link nav-link text-white text-start p-2 mb-2"
+            onclick="showSection('listings')">Listings</button>
+          <button type="button" class="nav-item btn btn-link nav-link text-white text-start p-2 mb-2"
+            onclick="showSection('categories')">Categories</button>
+          <button type="button" class="nav-item btn btn-link nav-link text-white text-start p-2 mb-2"
+            onclick="showSection('verification')">Verification</button>
+          <button type="button" class="nav-item btn btn-link nav-link text-white text-start p-2 mb-2"
+            onclick="showSection('password')">Passwords</button>
+        </ul>
+      </nav>
+
+      <!-- Main Content -->
+      <main id="main-content" class="col-12 col-md-9 col-lg-10 px-3 py-4">
+        <!-- <!-- ADMINS --> <!-- <div id="admin" class="admin-section"> -->
+        <!--   <h3>Admins</h3> -->
+        <!--   <form id="changeRole" class="mb-3"> -->
+        <!--     <div class="input-group"> -->
+        <!--       <label for="user_id">User ID:</label> -->
+        <!--       <input type="text" id="user-admin-search" name='id' class="form-control" placeholder="Search by id"> -->
+        <!--       <button type="submit" class="btn btn-primary">Search</button> -->
+        <!--     </div> -->
+        <!--   </form> -->
+        <!--   <div id="user-list" class="row gy-3"></div> -->
+        <!-- </div> -->
+        <!-- USERS -->
+        <div id="users" class="admin-section">
+          <h3>Users</h3>
+          <form id="searchUser" class="mb-3">
+            <div class="input-group">
+              <input type="text" id="user-search" class="form-control" placeholder="Search user">
+              <button type="submit" class="btn btn-primary">Search</button>
+            </div>
+          </form>
+          <div id="user-list" class="row gy-3"></div>
+        </div>
+
+        <!-- SELLERS -->
+        <div id="sellers" class="admin-section">
+          <h3>Sellers</h3>
+          <form id="searchSeller" class="mb-3">
+            <div class="input-group">
+              <input type="text" id="seller-search" class="form-control" placeholder="Search seller by user id">
+              <button type="submit" class="btn btn-primary">Search</button>
+            </div>
+          </form>
+          <div id="sellers-list" class="row gy-3"></div>
+        </div>
+
+        <!-- LISTINGS -->
+        <div id="listings" class="admin-section">
+          <h3>Listings</h3>
+          <form id="searchListing" class="my-5">
+            <input type="text" name="listing_search" id="list-search" class="form-control mb-4"
+              placeholder="Search listing title">
+            <button type="submit" class="btn btn-primary">Search Listing</button>
+            <div id="listing-list" class="row gy-3 my-5"></div>
+          </form>
+        </div>
+
+        <!-- CATEGORIES -->
+        <div id="categories" class="admin-section">
+          <h3>Add Category</h3>
+          <input type="text" id="catId" name="category_id" oninput="fillCategory()" class="form-control mb-2"
+            placeholder="Category ID">
+          <input type="text" id="catName" class="form-control mb-2" placeholder="Category Name">
+          <input type="text" id="catDescp" class="form-control mb-2" placeholder="Category Description">
+          <button class="btn btn-success" onclick="addCategory()">Add Category</button>
+          <button class="btn btn-success" onclick="updateCategory()">Update Category</button>
+        </div>
+
+        <!-- VERIFICATION -->
+        <div id="verification" class="admin-section">
+          <h3>Update Seller Verification</h3>
+          <input type="text" id="verify-id" class="form-control mb-2" placeholder="Seller ID">
+          <select id="verify-status" class="form-select mb-2">
+            <option value="verified">Verify</option>
+            <option value="unverified">Unverified</option>
+          </select>
+          <button class="btn btn-warning" onclick="verifySeller()">Update</button>
+        </div>
+
+        <!-- PASSWORD -->
+        <div id="password" class="admin-section">
+          <h3>Change User Password</h3>
+          <input type="text" id="passwordUserId" class="form-control mb-2" placeholder="User ID">
+          <input type="password" id="newPassword" class="form-control mb-2" placeholder="New Password">
+          <button class="btn btn-secondary" onclick="updatePassword()">Change Password</button>
+        </div>
+      </main>
+    </div>
+  </div>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="js/navbar.js"></script>
+  <script src="js/admin.js"></script>
+
+</body>
+
+</html>
