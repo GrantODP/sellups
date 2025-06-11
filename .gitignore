@@ -1,0 +1,4 @@
+# .gitignore
+# media/*
+# !media/.gitkeep
+# sys_config.php
