@@ -24,4 +24,5 @@ RUN chown -R www-data:www-data /var/www/html
 
 # Expose port 80 (default for Apache)
 EXPOSE 80
+EXPOSE 443
 

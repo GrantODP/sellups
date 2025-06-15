@@ -77,7 +77,7 @@ if (postAdForm) {
 async function loadPage() {
   const log_in = await isLoggedIn();
   if (!log_in) {
-    navigateWindow('login');
+    return navigateWindow('login');
   }
   populateCategoriesDropdown();
 }

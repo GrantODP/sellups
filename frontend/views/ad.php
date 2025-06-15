@@ -18,6 +18,7 @@
   </div>
 
 
+  <?php include('footer.html'); ?>
   <script type="module" src="ad.js"></script>
   <script src="js/navbar.js"></script>
 </body>

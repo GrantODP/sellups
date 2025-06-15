@@ -21,7 +21,7 @@ require_once './backend/core/Result.php';
 
 
 C2Config::load();
-/* Database::connect(); */
+Database::connect();
 
 
 
@@ -128,8 +128,8 @@ $router->add_get('/admin', 'PageAdminController::admin');
 
 
 
-$default = 'PageController::get_all_ads_page';
+$default = '';
 
-$router->handle("", $default);
+$router->handle();
 
 ob_end_flush();

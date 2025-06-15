@@ -18,6 +18,7 @@
   <?php include('navbar.html'); ?>
 
   <div class="container-fluid">
+
     <div class="row flex-column flex-md-row min-vh-100">
       <nav class="col-12 col-md-3 col-lg-2 bg-dark text-white p-3">
         <h4 class="text-center mb-4">Seller Panel</h4>
@@ -62,6 +63,7 @@
 
         <div id="edit-listing-section" class="content-section d-none">
         </div>
+
 
       </main>
     </div>

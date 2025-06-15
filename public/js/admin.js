@@ -91,6 +91,8 @@ async function searchListing() {
     return;
   }
 }
+
+
 async function searchSeller() {
   const query = document.getElementById('seller-search').value.toLowerCase().trim();
   if (query) {

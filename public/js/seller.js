@@ -1,4 +1,6 @@
-import { Swal, navigateWindow, getSellerListings, getUserSellerInfo, isLoggedIn, getUrlParams, getLocalData, storeLocalData, updateListing, uploadLisingImages, getResource, storeSessionData, getSessionData } from "../script.js";
+
+import { Swal, navigateWindow, getSellerListings, getUserSellerInfo, isLoggedIn, getUrlParams, getLocalData, storeLocalData, updateListing, uploadLisingImages, getResource, storeSessionData, getSessionData, deleteListing } from "../script.js";
+
 
 async function loadSection(section) {
   // Hide all content sections first
@@ -305,6 +307,7 @@ async function loadAds() {
           </p>
           <a href="/ads/${ad.slug}" target="_blank" class="btn btn-primary me-2">View</a>
           <button class="btn btn-secondary edit-btn" data-ad-id="${ad.listing_id}">Edit</button>
+          <button type="button" class="btn btn-danger delete-btn" data-ad-id="${ad.listing_id}">Delete Listing</button>
         </div>
       </div>
     `).join('');
@@ -317,8 +320,52 @@ async function loadAds() {
       }
     });
   });
+
+  document.querySelectorAll('.delete-btn').forEach(button => {
+    button.addEventListener('click', async () => {
+      const id = button.getAttribute('data-ad-id');
+      await deleteSellerListing(id);
+
+    });
+  });
 }
 
+async function deleteSellerListing(id) {
+  try {
+    const result = await Swal.fire({
+      title: 'Are you sure?',
+      text: "This listing will be permanently deleted.",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#d33',
+      cancelButtonColor: '#6c757d',
+      confirmButtonText: 'Yes, delete it!'
+    });
+
+    if (result.isConfirmed) {
+      await deleteListing(id); // your actual deletion function
+
+      await Swal.fire({
+        icon: 'success',
+        title: 'Deleted!',
+        text: 'Your listing has been deleted.',
+        timer: 2000,
+        timerProgressBar: true,
+        showConfirmButton: false,
+        willClose: () => {
+          loadAds(); // reload ads after success alert
+        }
+      });
+    }
+  } catch (err) {
+    console.error(err);
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: 'Something went wrong while deleting the listing.',
+    });
+  }
+}
 
 function loadListingEdit(listing) {
   const container = document.getElementById('edit-listing-section');
