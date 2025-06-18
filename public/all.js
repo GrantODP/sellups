@@ -6,7 +6,6 @@ import {
   getPreview,
   getTemplate,
   getUrlParams,
-  loadTemplates,
   navigateWindow,
   NotfoundError,
   renderErrorPage,
@@ -20,16 +19,14 @@ async function renderCategories() {
 
   const categories = await getCategories();
   const container = document.getElementById("category-list")
-  const category_name = getCookie('cat_name') ?? "";
-  const name_container = document.getElementById("category-name");
-  name_container.innerText = category_name;
+
 
   categories.forEach(cat => {
 
     const button = document.createElement('a');
     button.textContent = cat.name;
     button.className = "btn btn-outline-primary border border-dark  text-start";
-    button.href = `/ads?category=${cat.cat_id}`
+    button.href = `/browse?category=${cat.cat_id}`
     button.addEventListener("click", () => {
       updateCatHeader(cat.name);
     })
@@ -86,14 +83,20 @@ async function populateListings(listings) {
 
 async function renderListings() {
   const params = getUrlParams();
-
-
   const query = params.get('q') ?? '';
   const id = params.get('category') ?? 0;
   const sort_val = params.get('sort') ?? 'date';
   const sort_dir = params.get('dir') ?? 'desc';
   const page = params.get('page') ?? 1;
   const limit = params.get('limit') ?? 10;
+  let header = "Browse";
+
+  if (id) {
+    header = getCookie("cat_name");
+  } else if (query) {
+    header = `Search for "${query}"`
+  }
+  updateCatHeader(`${header}`);
   try {
 
     let listings;
@@ -135,9 +138,7 @@ async function initSearch() {
     if (!search) {
       return;
     }
-
-    updateCatHeader(`Search for "${search}`);
-    navigateWindow(`ads?q=${search}`);
+    navigateWindow(`browse?q=${search}`);
   });
 }
 function updateCatHeader(text = '') {
