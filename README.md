@@ -2,8 +2,6 @@
 
 Sellup is a consumer-to-consumer (C2C) web platform designed to support South Africans participating in the informal economy. Amidst high unemployment, Sellup provides an accessible, user-friendly space for individuals to advertise, discover, and evaluate listings online.
 
-## 🌍 Live Demo
-Visit the live site: [https://sellups.onrender.com](https://sellups.onrender.com)
 
 ## 📚 Overview
 
@@ -88,6 +86,7 @@ There are two ways to add new pages:
    \`\`\`php
    $router->add_get('/mypage', PageController::my_function);
    \`\`\`
+
 
 
 
